@@ -19,9 +19,36 @@ namespace Kursovaya
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = @"Server=(localdb)\MSSQLLocalDB; Database=MasterPiece; Integrated
-        Security=True;";
+            optionsBuilder.UseSqlServer( @"Server=(localdb)\MSSQLLocalDB; Database=MasterPiece; Trusted_Connection = True;");
         }
-       //protected
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<User>()
+            .HasIndex( u => u.userId)
+            .IsUnique();
+
+            modelBuilder.Entity<Genre>()
+                .HasIndex(g => g.genreId)
+                .IsUnique();
+
+            modelBuilder.Entity<Piece>()
+                .HasOne(p => p.User)
+                .WithMany()
+               .HasForeignKey(p => p.userId);
+
+            modelBuilder.Entity<Piece>()
+               .HasOne(p => p.Genre)
+               .WithMany()
+              .HasForeignKey(p => p.genreId);
+
+            modelBuilder.Entity<Session>()
+                .HasIndex(s => s.sessionId)
+                .IsUnique();
+            modelBuilder.Entity<Achievement>()
+                .HasIndex(a => a.achievementId)
+                .IsUnique();
+
+        }
     }
 }
