@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Kursovaya.Entities
 {
+    /// <summary>
+    /// Класс для хранения достижений
+    /// </summary>
     public class Achievement
     {
         [Key]

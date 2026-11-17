@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Kursovaya.Entities
 {
+    /// <summary>
+    /// Класс для хранения сессий урока
+    /// </summary>
     public class Session
     {
         [Key]

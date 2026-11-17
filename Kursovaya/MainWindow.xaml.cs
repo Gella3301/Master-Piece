@@ -16,9 +16,16 @@ namespace Kursovaya
     /// </summary>
     public partial class MainWindow : Window
     {
+        private AppDbContext db;
+
         public MainWindow()
         {
             InitializeComponent();
+            
+        db = new AppDbContext();
+
+        db.Database.EnsureCreated();// Инициализация бд
         }
+
     }
 }

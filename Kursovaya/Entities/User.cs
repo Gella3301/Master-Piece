@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Kursovaya.Entities
 {
+    /// <summary>
+    /// Класс для хранения пользователя
+    /// </summary>
     public class User
     {
         [Key]
