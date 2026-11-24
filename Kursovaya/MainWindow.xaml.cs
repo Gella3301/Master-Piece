@@ -27,5 +27,10 @@ namespace Kursovaya
         db.Database.EnsureCreated();// Инициализация бд
         }
 
+      
+        private void btnOpenNewSession_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Создание новых сессий будет доступно после реализации других окон , необходимых для работы этой функции");
+        }
     }
 }
