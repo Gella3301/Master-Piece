@@ -5,8 +5,99 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovaya"
         mc:Ignorable="d"
-        Title="AddPieceWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="AddPieceWindow" Height="600" Width="500">
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Заголовок -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поля ввода -->
+            <RowDefinition Height="*"/>
+            <!-- Обложка и поиск -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки -->
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Text="Новое произведение" FontSize="24" FontWeight="Bold" Foreground="#111827" Margin="0,0,0,20"/>
+
+        <!-- Поля ввода -->
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Название:" Foreground="#4B5563" Margin="0,0,0,5"/>
+            <TextBox x:Name="txtTitle" Height="30" Padding="5" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Композитор:" Foreground="#4B5563" Margin="0,0,0,5"/>
+            <TextBox x:Name="txtComposer" Height="30" Padding="5" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Сложность (1-10):" Foreground="#4B5563" Margin="0,0,0,5"/>
+            <TextBox x:Name="txtDifficulty" Height="30" Padding="5" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Жанр:" Foreground="#4B5563" Margin="0,0,0,5"/>
+            <ComboBox x:Name="cmbGenre" Height="30" Margin="0,0,0,10"/>
+            <TextBlock Text="Статус изучения:" Foreground="#4B5563" Margin="0,0,0,5"/>
+            <ComboBox x:Name="cmbStatus" Height="30" Margin="0,0,0,10">
+                <ComboBoxItem Content="В планах" IsSelected="True"/>
+                <ComboBoxItem Content="Изучается"/>
+                <ComboBoxItem Content="Выучено"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Блок с обложкой и поиском в интернете -->
+        <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="15" Margin="0,10,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <!-- Картинка -->
+                    <ColumnDefinition Width="127*"/>
+                    <ColumnDefinition Width="178*"/>
+                    <!-- Кнопка API -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Превью обложки -->
+                <Border Grid.Column="0" Width="100" Height="100" Background="#E5E7EB" CornerRadius="4" Margin="0,0,0,-100">
+                    <Image x:Name="imgCover" Stretch="UniformToFill"/>
+                </Border>
+
+                <!-- Кнопка поиска в API -->
+                <StackPanel Grid.Column="1" Margin="15,0,0,0" VerticalAlignment="Center" Grid.ColumnSpan="2">
+                    <TextBlock Text="Найти обложку в сети:" Foreground="#4B5563" Margin="0,0,0,5"/>
+                    <Button x:Name="btnSearchApi" Content="🔍 Искать в iTunes" Background="#10B981" Foreground="White" Padding="10,8" BorderThickness="0" Cursor="Hand" Click="btnSearchApi_Click">
+                        <Button.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Кнопки управления -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="Отмена" Width="100" Height="40" Margin="0,0,10,0" Background="Transparent" BorderBrush="#D1D5DB" BorderThickness="1" Foreground="#4B5563" Cursor="Hand" Click="btnCancel_Click"/>
+            <Button Content="Сохранить" Width="120" Height="40" Background="#4F46E5" Foreground="White" BorderThickness="0" FontWeight="SemiBold" Cursor="Hand" Click="btnSave_Click">
+                <Button.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

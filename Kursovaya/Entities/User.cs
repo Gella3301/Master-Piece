@@ -18,7 +18,7 @@ namespace Kursovaya.Entities
         public string password { get; set; }
 
         public string email { get; set; }
-        public int achievementId { get; set; } // внешний ключ от достижений
+        public int? achievementId { get; set; }// внешний ключ от достижений
 
         public Achievement ? Achievement { get; set; }
     }

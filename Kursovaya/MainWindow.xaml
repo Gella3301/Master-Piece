@@ -81,9 +81,8 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Библиотека произведений" FontSize="20" FontWeight="SemiBold" Foreground="#1F2937" VerticalAlignment="Center"/>
-                        <Button Grid.Column="1" Content="+ Добавить" Background="#6366F1" Foreground="White" Padding="25,12" BorderThickness="0" Cursor="Hand">
-                     
-                        </Button>
+                        <Button Grid.Column="1" Name="AddPieceBtn" Click="AddPieceBtn_Click" Content="+ Добавить" Background="#6366F1" Foreground="White" Padding="25,12" BorderThickness="0" Cursor="Hand" />
+
                     </Grid>
                 </Border>
                 <!-- Фильтры -->
@@ -111,5 +110,19 @@
         <TabItem Header="🏆  Профиль">
             <TextBlock Text="Профиль в разработке..." HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="Gray"/>
         </TabItem>
-        </TabControl>
+        <!-- Вкладка 5: О проекте -->
+        <TabItem Header="ℹ️  О проекте">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="40">
+                <StackPanel>
+                    <TextBlock Text="О проекте MasterPiece" FontSize="24" FontWeight="Bold" Foreground="#1F2937" Margin="0,0,0,20"/>
+
+                    <TextBlock Text="Автор:Горбунова Ольга Васильевна" Foreground="#374151" Margin="0,0,0,5"/>
+                    <TextBlock Text="Преподаватель: Егурнова Елена Николаевна" Foreground="#374151" Margin="0,0,0,5"/>
+                    <TextBlock Text="Стек: C#, WPF, Entity Framework Core (MSSQL), NAudio, MathNet.Numerics, iTunes Search API." Foreground="#374151" Margin="0,0,0,5"/>
+                    <TextBlock Text="Паттерны: Фасад (Facade) — для работы с БД; Стратегия (Strategy) — для тюнера." Foreground="#374151" Margin="0,0,0,5"/>
+                    <TextBlock Text="© 2026 MasterPiece. Курсовой проект." HorizontalAlignment="Center" Foreground="#9CA3AF" Margin="0,20,0,0"/>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
 </Window>

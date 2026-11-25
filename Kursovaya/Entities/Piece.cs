@@ -19,6 +19,7 @@ namespace Kursovaya.Entities
         public string Composer { get; set; }
 
         public int difficulty { get; set; }
+        public string? coverUrl { get; set; } // строчка для хранения фото произведения
 
         public string status { get; set; }
         public int userId { get; set; }   // Внешний ключ для User

@@ -40,6 +40,12 @@ namespace Kursovaya
               .HasIndex( u => u.userId)
               .IsUnique();
 
+            modelBuilder.Entity<User>()
+            .HasOne(u => u.Achievement)
+            .WithMany()
+            .HasForeignKey(u => u.achievementId)
+            .IsRequired(false);
+
             modelBuilder.Entity<Genre>()
                 .HasIndex(g => g.genreId)
                 .IsUnique();
