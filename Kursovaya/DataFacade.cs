@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kursovaya
 {
@@ -30,7 +31,13 @@ namespace Kursovaya
             _context.Sessions.Add(session);
             _context.SaveChanges();
         }
-
+        public List<Session> GetAllSessionsWithPieces()
+        {
+            return _context.Sessions
+                .Include(s => s.Piece) // Подгружаем связанное произведение
+                .OrderByDescending(s => s.StartTime) // Сортируем: новые сверху
+                .ToList();
+        }
         public List<Piece> GetAllPieces()
         {
             return _context.Pieces.ToList();

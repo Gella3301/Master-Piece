@@ -5,8 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovaya"
         mc:Ignorable="d"
-        Title="NewSessionWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="NewSessionWindow" Height="450" Width="800"
+    WindowStartupLocation="CenterOwner" Background="#F8F9FA" ResizeMode="NoResize">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Text="Тренировка" FontSize="24" FontWeight="Bold" Foreground="#111827" Margin="0,0,0,20"/>
+
+        <!-- Выбор произведения -->
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Выберите произведение:" Foreground="#4B5563" Margin="0,0,0,5"/>
+            <ComboBox x:Name="cmbPieces" Height="35" Margin="0,0,0,15"/>
+        </StackPanel>
+
+        <!-- Таймер -->
+        <Border Grid.Row="2" Background="White" CornerRadius="12" Padding="20" VerticalAlignment="Center" Margin="0,10,0,10">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock x:Name="lblTimer" Text="00:00:00" FontSize="48" FontWeight="Bold" Foreground="#4F46E5" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="lblStatus" Text="Нажмите 'Старт' чтобы начать" FontSize="14" Foreground="#9CA3AF" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Блок оценки (появляется после остановки) -->
+        <StackPanel Grid.Row="3" x:Name="pnlRating" Visibility="Collapsed">
+            <TextBlock Text="Оцените свою игру (1-10):" Foreground="#4B5563" Margin="0,0,0,5"/>
+            <ComboBox x:Name="cmbSelfRate" Height="30" Margin="0,0,0,15">
+                <ComboBoxItem Content="1" />
+                <ComboBoxItem Content="2" />
+                <ComboBoxItem Content="3" />
+                <ComboBoxItem Content="4" />
+                <ComboBoxItem Content="5" />
+                <ComboBoxItem Content="6" />
+                <ComboBoxItem Content="7" />
+                <ComboBoxItem Content="8" />
+                <ComboBoxItem Content="9" />
+                <ComboBoxItem Content="10" />
+            </ComboBox>
+            <Button Content="Сохранить сессию" Background="#4F46E5" Foreground="White" FontWeight="SemiBold" Height="40" BorderThickness="0" Cursor="Hand" Click="btnSaveSession_Click">
+                <Button.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+
+        <!-- Кнопка Старт/Стоп -->
+        <StackPanel Grid.Row="3" x:Name="pnlStartStop">
+            <Button x:Name="btnToggleTimer" Content="▶ Старт" Background="#10B981" Foreground="White" FontSize="16" FontWeight="SemiBold" Padding="30,12" BorderThickness="0" Cursor="Hand" Click="btnToggleTimer_Click">
+                <Button.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>
